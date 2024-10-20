@@ -6,7 +6,7 @@ import cors from 'cors';
 const app = express();
 
 app.use(cors({
-    origin: 'https://kaushalam-todo-task.vercel.app',
+    origin: 'https://kaushalam-todo-task.vercel.app/',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
