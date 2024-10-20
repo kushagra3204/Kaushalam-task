@@ -1,8 +1,8 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import Landing from './pages/Landing';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
+import Landing from './pages/landingPage';
+import Signup from './pages/SignupPage';
+import Login from './pages/LoginPage';
 import { Routes, Route } from 'react-router-dom'
 
 
