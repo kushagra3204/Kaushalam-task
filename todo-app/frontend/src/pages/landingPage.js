@@ -19,7 +19,7 @@ const Landing = () => {
     const [taskDeleted, setTaskDeleted] = useState(false)
 
     const loadTodos = async () => {
-        const response = await axios.get('/todo/gettodos', {
+        const response = await axios.get('https://kaushalam-task-server.vercel.app/todo/gettodos', {
             headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
         })
         const { todos, uname } = await response.data
@@ -39,7 +39,7 @@ const Landing = () => {
                 title: todo,
                 createdAt: Date.now()
             }
-            const res = await axios.post('/todo/createtodo', data, {
+            const res = await axios.post('https://kaushalam-task-server.vercel.app/todo/createtodo', data, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
             })
             const response = await res.data
@@ -82,7 +82,7 @@ const Landing = () => {
     }
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`/todo/deletetodo/${id}`, {
+            const res = await axios.delete(`https://kaushalam-task-server.vercel.app/todo/deletetodo/${id}`, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
             })
             const response = await res.data
@@ -127,7 +127,7 @@ const Landing = () => {
         try {
             const newtodo = window.prompt('Enter new Todo')
             setTodo(newtodo)
-            const res = await axios.put(`/todo/edittodo/${id}`, {
+            const res = await axios.put(`https://kaushalam-task-server.vercel.app/todo/edittodo/${id}`, {
                 "title": newtodo
             }, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
@@ -174,7 +174,7 @@ const Landing = () => {
     const addTask = async (e) => {
         try {
             e.preventDefault()
-            const res = await axios.post(`/todo/createtask/${taskid}`, { task: task }, {
+            const res = await axios.post(`https://kaushalam-task-server.vercel.app/todo/createtask/${taskid}`, { task: task }, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
             })
             const response = await res.data
@@ -217,7 +217,7 @@ const Landing = () => {
         }
     }
     const handleTaskClick = async (id) => {
-        const res = await axios.get(`/todo/gettodo/${id}`, {
+        const res = await axios.get(`https://kaushalam-task-server.vercel.app/todo/gettodo/${id}`, {
             headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
         })
         setTasks(res.data.todo.tasks)
@@ -230,7 +230,7 @@ const Landing = () => {
         try {
             e.preventDefault()
             const text = e.target.parentNode.parentNode.firstChild.firstChild.innerText
-            const res = await axios.delete(`/todo/deletetask/${taskid}`, {
+            const res = await axios.delete(`https://kaushalam-task-server.vercel.app/todo/deletetask/${taskid}`, {
                 data: { taskString: text },
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
             })
@@ -274,7 +274,7 @@ const Landing = () => {
         }
     }
     const sort = async (n) => {
-        const response = await axios.get('/todo/sortTodo', {
+        const response = await axios.get('https://kaushalam-task-server.vercel.app/todo/sortTodo', {
             params: { order: n },
             headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
         })
